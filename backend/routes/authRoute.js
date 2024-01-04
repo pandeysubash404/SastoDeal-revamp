@@ -27,7 +27,7 @@ router.get("/users", getallUser);
 router.get("/refresh", handleRefreshToken);
 router.get("/logout", logout);
 //router.get("/:id", getaUser);
-router.get("/:id([0-9a-fA-F]{24})", authMiddleware, isAdmin, getaUser);
+router.get("/:id([0-9a-fA-F]{24})", authMiddleware, getaUser);
 router.delete("/:id([0-9a-fA-F]{24})", deleteaUser);
 router.delete("/empty-cart", authMiddleware, emptyCart);
 router.put("/edit-user", authMiddleware, updatedUser);

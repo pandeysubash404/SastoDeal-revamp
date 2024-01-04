@@ -13,12 +13,11 @@ import PageNotFound from "./Pages/PageNotFound";
 import PersonalInfo from "./Pages/PersonalInfo";
 import ProductDescription from "./Pages/ProductDescription";
 import AddToCart from "./Pages/AddToCart";
-import PersonalInfoSection from "./Components/Personal Info/section"
+import PersonalInfoSection from "./Components/Personal Info/section";
 
 function App() {
   return (
     <div>
-
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -27,17 +26,15 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/signup" element={<Signup />} />
-          <Route path="/account" element={<PersonalInfoSection />} />
+          {/* <Route path="/account" element={<PersonalInfoSection />} /> */}
           <Route path="/product" element={<ProductDescription />} />
           <Route path="/cart" element={<AddToCart />} />
           <Route path="/account" element={<PersonalInfo />} />
-           
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-
     </div>
   );
 }

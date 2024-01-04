@@ -13,17 +13,16 @@ function LoginForm() {
     const token = localStorage.getItem("token");
     return token !== null;
   };
-  
+
   const navigateToDashboard = () => {
     navigate("/"); // Redirect to home
   };
-  
+
   useEffect(() => {
     if (isTokenValid()) {
       navigateToDashboard();
     }
   }, [isTokenValid]);
-
 
   const loginUser = async () => {
     try {
@@ -37,16 +36,18 @@ function LoginForm() {
           body: JSON.stringify({ email, password }),
         }
       );
-  
+
       if (!response.ok) {
+        console.error("Login failed. Response:", response);
+        setError("Invalid credentials. Please try again.");
         throw new Error("Login failed");
       }
-  
+
       const userData = await response.json();
-  
+
       localStorage.setItem("token", userData.token);
       localStorage.setItem("userId", userData._id);
-  
+
       // Redirect to the home page or the previous page
       navigateToDashboard();
     } catch (error) {
@@ -54,8 +55,7 @@ function LoginForm() {
       setError("Invalid credentials. Please try again.");
     }
   };
-  
-  
+
   return (
     <div className="ml-40">
       <div>
